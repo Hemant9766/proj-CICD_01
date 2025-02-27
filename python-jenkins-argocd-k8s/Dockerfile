@@ -1,11 +1,10 @@
 FROM python:3
 
-# Install dependencies
-RUN apt-get update && apt-get install -y python3-distutils
+# Install dependencies including distutils and python3-dev
+RUN apt-get update && apt-get install -y python3-distutils python3-dev
 
-# Install Python dependencies from requirements.txt
-COPY requirements.txt .
-RUN pip install -r requirements.txt
+# Install Django
+RUN pip install django==3.2
 
 # Copy the application files
 COPY . .
